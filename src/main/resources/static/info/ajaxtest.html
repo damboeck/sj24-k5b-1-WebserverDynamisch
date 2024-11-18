@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function ajaxtest() {
+            // Beispiel-Daten (zwei Double-Werte)
+            let value1 = 12.34;
+            let value2 = 56.78;
+
+            // AJAX-Anfrage
+            $.ajax({
+                url: '/api/add', // Ersetze durch deinen Endpoint
+                type: 'POST', // POST wird verwendet, um Daten zu senden
+                contentType: 'application/json', // JSON-Datenformat
+                data: JSON.stringify({ wert1: value1, wert2: value2 }), // Konvertiere die Daten in JSON
+                success: function(response) {
+                    // Erfolgreiche Antwort
+                    //console.log('Erhaltene Antwort:'+response.ergebnis);
+                    alert('Das Ergebnis ist: ' + response.ergebnis); // Antwortwert anzeigen (z. B. `response.result`)
+                },
+                error: function(xhr, status, error) {
+                    // Fehlerbehandlung
+                    console.error('Fehler:', error);
+                    alert('Ein Fehler ist aufgetreten: ' + error);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <script>ajaxtest()</script>
+</body>
+</html>
